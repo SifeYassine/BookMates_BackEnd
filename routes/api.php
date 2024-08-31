@@ -6,6 +6,7 @@ use App\Http\Controllers\api\auth\AuthController;
 use App\Http\Controllers\api\genres\GenreController;
 use App\Http\Controllers\api\roles\RoleController;
 use App\Http\Controllers\api\books\BookController;
+use App\Http\Controllers\api\book_posts\BookPostController;
 
 // Auth routes
 Route::group(['middleware' => 'api'], function () {
@@ -39,7 +40,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Book posts routes
     Route::post('book_posts/create', [BookPostController::class, 'create']);
     Route::get('book_posts/index', [BookPostController::class, 'index']);
-    Route::post('book_posts/update/{id}', [BookPostController::class, 'update']);
+    Route::get('book_posts/show/{id}', [BookPostController::class, 'show']);
+    Route::put('book_posts/update/{id}', [BookPostController::class, 'update']);
     Route::delete('book_posts/delete/{id}', [BookPostController::class, 'delete']);
 });
 

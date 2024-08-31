@@ -74,6 +74,7 @@ class BookController extends Controller
     {
         try {
             $books = Book::all();
+
             return response()->json([
                 'status' => true,
                 'message' => 'All books',
@@ -91,6 +92,7 @@ class BookController extends Controller
     {
         try {
             $book = Book::find($id);
+            
             if (!$book) {
                 return response()->json([
                     'status' => false,

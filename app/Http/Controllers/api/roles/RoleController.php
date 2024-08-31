@@ -46,6 +46,7 @@ class RoleController extends Controller
     {
         try {
             $roles = Role::all();
+            
             return response()->json([
                 'status' => true,
                 'message' => 'Roles fetched successfully',

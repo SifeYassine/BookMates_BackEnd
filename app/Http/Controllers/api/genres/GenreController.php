@@ -46,6 +46,7 @@ class GenreController extends Controller
     {
         try {
             $genres = Genre::all();
+            
             return response()->json([
                 'status' => true,
                 'message' => 'All genres',

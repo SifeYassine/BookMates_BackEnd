@@ -9,6 +9,7 @@ use App\Http\Controllers\api\books\BookController;
 use App\Http\Controllers\api\book_posts\BookPostController;
 use App\Http\Controllers\api\bookmarks\BookmarkController;
 use App\Http\Controllers\api\exchangerequests\ExchangeRequestController;
+use App\Http\Controllers\api\ratings\RatingController;
 
 // Auth routes
 Route::group(['middleware' => 'api'], function () {
@@ -56,5 +57,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('exchange_requests/index', [ExchangeRequestController::class, 'index']);
     Route::put('exchange_requests/update/{id}', [ExchangeRequestController::class, 'update']);
     Route::delete('exchange_requests/delete/{id}', [ExchangeRequestController::class, 'delete']);
+
+    // Ratings routes
+    Route::post('ratings/create', [RatingController::class, 'create']);
+    Route::get('ratings/index', [RatingController::class, 'index']);
+    Route::put('ratings/update/{id}', [RatingController::class, 'update']);
+    Route::delete('ratings/delete/{id}', [RatingController::class, 'delete']);
 });
 

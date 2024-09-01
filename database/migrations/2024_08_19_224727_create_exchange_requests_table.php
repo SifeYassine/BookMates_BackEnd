@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('exchange_requests', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['accepted', 'pending', 'declined'])->default('pending');
-            $table->boolean('notification_sent')->default(false); 
+            $table->boolean('notification_sent')->default(0); 
             $table->foreignId('requester_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('bookPost_id')->constrained('book_posts')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

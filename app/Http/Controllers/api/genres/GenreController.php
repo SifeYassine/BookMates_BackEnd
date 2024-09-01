@@ -25,14 +25,14 @@ class GenreController extends Controller
                 ], 401);
             }
 
-            $Genre = Genre::create([
+            $genre = Genre::create([
                 'name' => $request->name
             ]);
 
             return response()->json([
                 'status' => true,
                 'message' => 'Genre created successfully',
-                'Genre' => $Genre
+                'genre' => $genre
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -63,9 +63,9 @@ class GenreController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $Genre = Genre::find($id);
+            $genre = Genre::find($id);
 
-            if (!$Genre) {
+            if (!$genre) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Genre not found'
@@ -84,14 +84,14 @@ class GenreController extends Controller
                 ], 401);
             }
 
-            $Genre->update([
+            $genre->update([
                 'name' => $request->name
             ]);
 
             return response()->json([
                 'status' => true,
                 'message' => 'Genre updated successfully',
-                'Genre' => $Genre
+                'genre' => $genre
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -104,16 +104,16 @@ class GenreController extends Controller
     public function delete($id)
     {
         try {
-            $Genre = Genre::find($id);
+            $genre = Genre::find($id);
 
-            if (!$Genre) {
+            if (!$genre) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Genre not found'
                 ], 404);
             }
 
-            $Genre->delete();
+            $genre->delete();
             return response()->json([
                 'status' => true,
                 'message' => 'Genre deleted successfully',

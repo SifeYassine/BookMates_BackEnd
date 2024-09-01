@@ -7,6 +7,8 @@ use App\Http\Controllers\api\genres\GenreController;
 use App\Http\Controllers\api\roles\RoleController;
 use App\Http\Controllers\api\books\BookController;
 use App\Http\Controllers\api\book_posts\BookPostController;
+use App\Http\Controllers\api\bookmarks\BookmarkController;
+use App\Http\Controllers\api\exchangerequests\ExchangeRequestController;
 
 // Auth routes
 Route::group(['middleware' => 'api'], function () {
@@ -43,5 +45,16 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('book_posts/show/{id}', [BookPostController::class, 'show']);
     Route::put('book_posts/update/{id}', [BookPostController::class, 'update']);
     Route::delete('book_posts/delete/{id}', [BookPostController::class, 'delete']);
+
+    // Bookmarks routes
+    Route::post('bookmarks/create', [BookmarkController::class, 'create']);
+    Route::get('bookmarks/index', [BookmarkController::class, 'index']);
+    Route::delete('bookmarks/delete/{id}', [BookmarkController::class, 'delete']);
+
+    // Exchnage requests routes
+    Route::post('exchange_requests/create', [ExchangeRequestController::class, 'create']);
+    Route::get('exchange_requests/index', [ExchangeRequestController::class, 'index']);
+    Route::put('exchange_requests/update/{id}', [ExchangeRequestController::class, 'update']);
+    Route::delete('exchange_requests/delete/{id}', [ExchangeRequestController::class, 'delete']);
 });
 

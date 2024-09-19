@@ -17,7 +17,7 @@ class BookPostController extends Controller
     {   
         try {
             $validateBookPost = Validator::make($request->all(), [
-                'offer_id' => 'required|integer',
+                'offerer_id' => 'required|integer',
                 'offeredBook_id' => 'required|integer',
                 'wishedBook_id' => 'required|integer',
             ]);
@@ -30,7 +30,7 @@ class BookPostController extends Controller
                 ], 401);
             }
 
-            $offerer = User::find($request->offer_id);
+            $offerer = User::find($request->offerer_id);
             $offeredBook = Book::find($request->offeredBook_id);
             $wishedBook = Book::find($request->wishedBook_id);
 
@@ -42,7 +42,7 @@ class BookPostController extends Controller
             }
 
             $bookPost = BookPost::create([
-                'offerer_id' => $request->offer_id,
+                'offerer_id' => $request->offerer_id,
                 'offeredBook_id' => $request->offeredBook_id,
                 'wishedBook_id' => $request->wishedBook_id,
             ]);

@@ -35,10 +35,18 @@ class AuthController extends Controller
                 ], 400);
             }
 
-            // Check if the first user to register
-            $role_id = User::count() == 0 
-            ? Role::where('name', 'Admin')->first()->id 
-            : Role::where('name', 'User')->first()->id;
+            // Check if there are no users or roles, then create default roles
+            $role_id = null;
+
+            if (Role::count() == 0) {
+                // Create default roles
+                $adminRole = Role::create(['name' => 'Admin']);
+                $userRole = Role::create(['name' => 'User']);
+                $role_id = $adminRole->id; // First user becomes Admin
+            } else {
+                // If roles exist, assign "User" role
+                $role_id = Role::where('name', 'User')->first()->id;
+            }
 
             $user = User::create([
                 'name' => $request->name,

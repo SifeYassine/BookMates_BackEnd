@@ -86,7 +86,10 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'User logged out successfully']);
+        return response()->json([
+            'status' => true,
+            'message' => 'User logged out successfully'
+        ]);
     }
 
     // Get refresh token
